@@ -6,24 +6,32 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            int[] passwords = { 1, 2, 3, 4, 5, 6 };
-            int[] userinputs = new int[6];
-            int number = 0;
+            int[] answers = { 1, 2, 3, 4, 5, 6 };
+            int count = 6;
+            int[] passwords = new int[count];
 
-            while (number<6)
+            for(int index = 0;index<5;index++)
             {
-                Console.WriteLine("비밀번호를 입력해주세요.");
-                userinputs[number] = int.Parse(Console.ReadLine());
-                number = number + 1;
-
-                if (number ==6&&!(passwords[0] == userinputs[0] && passwords[1] == userinputs[1] && passwords[2] == userinputs[2] && passwords[3] == userinputs[3] && passwords[4] == userinputs[4] && passwords[5] == userinputs[5]))
+                for(count =0; count<6;count++)
                 {
-                    Console.WriteLine("비밀번호가 틀렸습니다.");
-                    number = 0;
-                    continue;
+                    Console.Write(count);
+                    Console.WriteLine("번째 숫자를 입력하세요.");
+                    passwords[count] = int.Parse(Console.ReadLine());
                 }
 
-                else if(number == 6)
+                bool isPasswordCorrect = true;
+                
+                    for(count=0;count<6;count++)
+                {
+                    if(answers[count]!=passwords[count])
+                    {
+                        Console.WriteLine("틀렸습니다. 다시 입력해주세요.");
+                        isPasswordCorrect = false;
+                        break;   
+                    }
+           
+                }
+                    if(isPasswordCorrect)
                 {
                     Console.WriteLine("문이 열립니다.");
                     break;
